@@ -1,4 +1,3 @@
-/* Generelle stiler for body */
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -6,7 +5,7 @@ body {
     background-color: #f4f4f4;
 }
 
-/* Stil for header */
+
 header {
     background-color: #333;
     color: #fff;
@@ -16,16 +15,14 @@ header {
     border-radius: 4px;
 }
 
-/* Container for hovedinnhold */
 .container {
     display: flex;
     justify-content: space-between;
     gap: 20px;
 }
 
-/* Stil for prosjektlisten */
 .project-list, .project-form {
-    width: 45%; /* Fordeler plassen mellom de to seksjonene */
+    width: 45%;
     background-color: #fff;
     border: 1px solid #ccc;
     padding: 20px;
@@ -33,7 +30,6 @@ header {
     border-radius: 4px;
 }
 
-/* Stil for overskrifter */
 .project-list h2, .project-form h2 {
     text-align: center;
     font-size: 1.5em;
@@ -41,7 +37,6 @@ header {
     margin-bottom: 20px;
 }
 
-/* Stil for prosjektlisten */
 .project-list ul {
     list-style-type: none;
     padding: 0;
@@ -53,7 +48,6 @@ header {
     border-bottom: 1px solid #ddd;
 }
 
-/* Stil for skjemaet */
 .project-form label {
     display: block;
     margin-top: 10px;
@@ -89,7 +83,6 @@ header {
     background-color: #45a049;
 }
 
-/* Stil for footer */
 footer {
     text-align: center;
     margin-top: 20px;
