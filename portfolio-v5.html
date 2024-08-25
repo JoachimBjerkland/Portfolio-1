@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosjektoversikt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .project-list, .project-form {
+            width: 45%;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+        .project-list h2, .project-form h2 {
+            text-align: center;
+        }
+        .project-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .project-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .project-form label {
+            display: block;
+            margin-top: 10px;
+        }
+        .project-form input, .project-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .project-form button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .project-form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Prosjektoversikt</h1>
+    </header>
+
+    <main class="container">
+
+        <section class="project-list">
+            <h2>Alle Prosjekter</h2>
+            <ul>
+                <li>Prosjekt 1</li>
+                <li>Prosjekt 2</li>
+                <li>Prosjekt 3</li>
+            </ul>
+        </section>
+
+        <section class="project-form">
+            <h2>Nytt Prosjekt</h2>
+            <form>
+                <label for="project-name">Prosjektnavn:</label>
+                <input type="text" id="project-name" name="project-name" placeholder="Prosjektnavn">
+
+                <label for="description">Beskrivelse:</label>
+                <textarea id="description" name="description" placeholder="Kort beskrivelse av prosjektet"></textarea>
+
+                <label for="start-date">Startdato:</label>
+                <input type="date" id="start-date" name="start-date">
+
+                <label for="end-date">Sluttdato:</label>
+                <input type="date" id="end-date" name="end-date">
+
+                <button type="submit">Lagre</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Webapplikasjoner</p>
+    </footer>
+
+</body>
+</html>
