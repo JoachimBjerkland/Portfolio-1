@@ -1,0 +1,45 @@
+{
+    "projects": [
+        {
+            "projectId": "1",
+            "projectName": "Utvikling av mobilapp",
+            "description": "Dette prosjektet fokuserer på å utvikle en ny mobilapplikasjon for intern bruk.",
+            "startDate": "2024-09-01",
+            "endDate": "2024-12-15",
+            "status": "pågår",
+            "assignedMembers": [
+                {
+                    "memberId": "101",
+                    "name": "Ole Bertheussen",
+                    "role": "Prosjektleder"
+                },
+                {
+                    "memberId": "102",
+                    "name": "Britt Neteland",
+                    "role": "Utvikler"
+                }
+            ]
+        },
+        {
+            "projectId": "2",
+            "projectName": "Nettstedsoppgradering",
+            "description": "Oppgradere bedriftens nettsted for bedre ytelse og brukeropplevelse.",
+            "startDate": "2024-07-01",
+            "endDate": "2024-10-01",
+            "status": "fullført",
+            "assignedMembers": [
+                {
+                    "memberId": "103",
+                    "name": "Frank Nilsen",
+                    "role": "Designer"
+                },
+                {
+                    "memberId": "104",
+                    "name": "Trine Hegland",
+                    "role": "Frontend-utvikler"
+                }
+            ]
+        }
+    ]
+}
+
