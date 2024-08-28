@@ -1,14 +1,17 @@
 {
-  "name": "hono",
-  "scripts": {
-    "dev": "tsx watch src/index.ts"
-  },
-  "dependencies": {
-    "@hono/node-server": "^1.12.1",
-    "hono": "^4.5.8"
-  },
-  "devDependencies": {
-    "@types/node": "^20.11.17",
-    "tsx": "^4.7.1"
-  }
+	"name": "spa",
+	"type": "module",
+	"scripts": {
+		"dev:frontend": "vite",
+		"dev:server": "node --watch server.js",
+		"dev": "concurrently -n frontend,server -c green,blue \"npm run dev:frontend\" \"npm run dev:server\""
+	},
+	"dependencies": {
+		"@hono/node-server": "^1.12.1",
+		"hono": "^4.5.7"
+	},
+	"devDependencies": {
+		"concurrently": "8.2.2",
+		"vite": "^5.4.2"
+	}
 }
