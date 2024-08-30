@@ -4,6 +4,8 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { serveStatic } from "@hono/node-server/serve-static";
 import fs from "fs/promises"; // Brukes for filoperasjoner
+import * as path from "path";
+import { fileURLToPath } from "url"; // Brukes for å konvertere import.meta.url
 
 // Oppretter en ny Hono-applikasjon
 const app = new Hono();
@@ -21,7 +23,7 @@ let habits = [];
 async function loadHabits() {
   try {
     const data = await fs.readFile("habits.json", "utf8"); // Leser innholdet i habits.json
-    habits = JSON.parse(data); // Pars det til et JSON-objekt
+    habits = JSON.parse(data); // Parser det til et JSON-objekt
     console.log("Vaner lastet fra fil:", habits); // Logger til konsollen for verifikasjon
   } catch (error) {
     console.error("Kunne ikke laste vaner fra fil:", error);
@@ -41,14 +43,31 @@ async function saveHabits() {
 // Laster vaner ved oppstart
 loadHabits();
 
+// Funksjon for å få stien til gjeldende katalog
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Funksjon for å liste filer og mapper i katalogen for prosjekter
+const directoryPath = path.resolve(__dirname); // Bruker ES module-kompatibel løsning
+const listFilesInDirectory = async () => {
+  try {
+    const files = await fs.readdir(directoryPath);
+    console.log("Files in directory:", files);
+    return files;
+  } catch (error) {
+    console.error("Error reading directory:", error);
+    return [];
+  }
+};
+
 // Definerer en POST-rute for å legge til nye vaner
 app.post("/add", async (c) => {
   const newHabit = await c.req.json(); // Leser data fra forespørselen
   console.log("Mottatt ny vane:", newHabit);
-  
+
   // Legger til den nye vanen i listen med en unik ID og tidsstempel
   habits.push({ id: crypto.randomUUID(), createdAt: new Date(), ...newHabit });
-  
+
   // Lagrer oppdatert liste til fil
   await saveHabits();
 
@@ -59,6 +78,12 @@ app.post("/add", async (c) => {
 // Definerer en GET-rute for å hente alle vaner
 app.get("/", (c) => {
   return c.json(habits); // Returnerer den nåværende listen over vaner
+});
+
+// Definerer en GET-rute for å hente alle prosjekter
+app.get("/projects", async (c) => {
+  const files = await listFilesInDirectory(); // Henter filene fra katalogen
+  return c.json(files); // Returnerer listen over filer som JSON
 });
 
 // Definerer porten serveren skal lytte på

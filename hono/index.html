@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="no">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vaner</title>
-  <link rel="stylesheet" href="./static/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaner og Prosjekter</title>
 </head>
-
 <body>
-  <h1>Vaner</h1>
-  <form id="habitForm">
-    <label for="title">Tittel:</label>
-    <input type="text" id="title" name="title">
-    <button type="submit">Legg til</button>
-  </form>
-  <ul id="habitsList"></ul>
-  <script type="module" src="main.js"></script>
-</body>
+    <h1>Vaner Tracker</h1>
 
+    <!-- Skjema for å legge til ny vane -->
+    <form id="habitForm">
+        <input type="text" name="title" placeholder="Skriv inn en vane" required>
+        <button type="submit">Legg til vane</button>
+    </form>
+
+    <!-- Liste over vaner -->
+    <ul id="habitsList"></ul>
+
+    <!-- Linker til JavaScript-filen -->
+    <script src="main.js"></script>
+</body>
 </html>
