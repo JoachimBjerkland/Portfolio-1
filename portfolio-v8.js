@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    let projects = [];
-
+    // Hent prosjekter fra LocalStorage hvis de finnes
+    let projects = JSON.parse(localStorage.getItem('projects')) || [];
 
     function displayProjects() {
         const projectList = document.querySelector('.project-list ul');
@@ -22,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const startDate = document.getElementById('start-date').value;
         const endDate = document.getElementById('end-date').value;
 
-
         const newProject = {
             id: projects.length + 1,
             name: projectName,
@@ -33,12 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         projects.push(newProject);
 
-        displayProjects();
+        // Lagre prosjektene i LocalStorage
+        localStorage.setItem('projects', JSON.stringify(projects));
 
+        displayProjects();
 
         event.target.reset();
     }
-
 
     const projectForm = document.querySelector('.project-form form');
     projectForm.addEventListener('submit', handleFormSubmit);

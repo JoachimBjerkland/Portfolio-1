@@ -7,8 +7,8 @@ interface Project {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    let projects: Project[] = [];
+    // Hent prosjekter fra LocalStorage hvis de finnes
+    let projects: Project[] = JSON.parse(localStorage.getItem('projects') || '[]');
 
     function displayProjects(): void {
         const projectList = document.querySelector('.project-list ul');
@@ -39,6 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         projects.push(newProject);
+
+        // Lagre prosjektene i LocalStorage
+        localStorage.setItem('projects', JSON.stringify(projects));
 
         displayProjects();
 
