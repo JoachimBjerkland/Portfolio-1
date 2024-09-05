@@ -22,7 +22,7 @@
 
         <section class="project-form">
             <h2>Nytt Prosjekt</h2>
-            <form>
+            <form id="project-form">
                 <label for="project-name">Prosjektnavn:</label>
                 <input type="text" id="project-name" name="project-name" placeholder="Prosjektnavn">
 
@@ -48,15 +48,53 @@
     <script>
         // Hent prosjektene fra portfolio-v7.js
         const projectList = document.querySelector('.project-list ul');
-        
-        // Tøm eksisterende liste
-        projectList.innerHTML = '';
+        const projectForm = document.getElementById('project-form');
 
-        // Iterer gjennom prosjektene og legg til dem i listen
-        projects.forEach(project => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${project.name} (${project.startDate} - ${project.endDate})`;
-            projectList.appendChild(listItem);
+        // Funksjon for å vise prosjektene i listen
+        function displayProjects() {
+            projectList.innerHTML = '';  // Tøm listen
+            projects.forEach(project => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${project.name} (${project.startDate} - ${project.endDate})`;
+                projectList.appendChild(listItem);
+            });
+        }
+
+        // Vis prosjekter når siden lastes
+        displayProjects();
+
+        // Funksjon for å legge til nytt prosjekt
+        projectForm.addEventListener('submit', function(event) {
+            event.preventDefault();  // Forhindre siden fra å laste på nytt
+
+            // Hent verdiene fra skjemaet
+            const projectName = document.getElementById('project-name').value;
+            const description = document.getElementById('description').value;
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+
+            // Sjekk at alle feltene er fylt ut
+            if (projectName && description && startDate && endDate) {
+                // Lag nytt prosjektobjekt
+                const newProject = {
+                    id: projects.length + 1,  // Sett en ny ID automatisk
+                    name: projectName,
+                    description: description,
+                    startDate: startDate,
+                    endDate: endDate
+                };
+
+                // Legg til prosjektet i listen
+                projects.push(newProject);
+
+                // Oppdater visningen
+                displayProjects();
+
+                // Tøm skjemaet etter lagring
+                projectForm.reset();
+            } else {
+                alert("Vennligst fyll ut alle feltene.");
+            }
         });
     </script>
 
