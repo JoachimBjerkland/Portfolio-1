@@ -1,4 +1,4 @@
-[
+const projects = [
     {
         "id": 1,
         "name": "Prosjekt 1",
@@ -19,5 +19,5 @@
         "description": "Dette er det tredje prosjektet",
         "startDate": "2024-03-01",
         "endDate": "2024-08-01"
-    }
-]
+    },
+];

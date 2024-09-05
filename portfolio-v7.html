@@ -16,9 +16,7 @@
         <section class="project-list">
             <h2>Alle Prosjekter</h2>
             <ul>
-                <li>Prosjekt 1</li>
-                <li>Prosjekt 2</li>
-                <li>Prosjekt 3</li>
+                <!-- Prosjekter vil bli lagt til her dynamisk via JavaScript -->
             </ul>
         </section>
 
@@ -45,7 +43,22 @@
     <footer>
         <p>© 2024 Webapplikasjoner</p>
     </footer>
+
     <script src="portfolio-v7.js"></script>
+    <script>
+        // Hent prosjektene fra portfolio-v7.js
+        const projectList = document.querySelector('.project-list ul');
+        
+        // Tøm eksisterende liste
+        projectList.innerHTML = '';
+
+        // Iterer gjennom prosjektene og legg til dem i listen
+        projects.forEach(project => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${project.name} (${project.startDate} - ${project.endDate})`;
+            projectList.appendChild(listItem);
+        });
+    </script>
 
 </body>
 </html>
